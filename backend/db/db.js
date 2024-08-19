@@ -3,15 +3,11 @@ const mongoose = require('mongoose');
 const db = async () => {
     try {
         mongoose.set('strictQuery', false);
-        await mongoose.connect(process.env.MONGO_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            tlsAllowInvalidCertificates: true // Add this line
-        });
+        await mongoose.connect(process.env.MONGO_URL);
         console.log('Db Connected');
     } catch (error) {
         console.log('DB Connection Error:', error.message);
     }
 };
 
-module.exports = { db };
+module.exports = {db}
